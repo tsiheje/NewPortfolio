@@ -8,6 +8,7 @@ import About from './Components/About/page';
 import Skills from './Components/Skills/page';
 import Projects from './Components/Projects/page';
 import Contact from './Components/Contact/page';
+import Ending from './Components/footer/page';
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -35,6 +36,7 @@ export default function Home() {
           <Skills/>
           <Projects/>
           <Contact/>
+          <Ending/>
         </motion.div>
       )}
     </AnimatePresence>
