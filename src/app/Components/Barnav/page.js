@@ -3,11 +3,9 @@ import { motion } from 'framer-motion';
 
 const Barnav = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeLink, setActiveLink] = useState('#home'); 
+  const [activeLink, setActiveLink] = useState('#home');
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
 
   const handleLinkClick = (link) => {
     setActiveLink(link);
@@ -15,38 +13,38 @@ const Barnav = () => {
   };
 
   const links = [
-    { href: '#home', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#projects', label: 'Projects' },
+    { href: '#home', label: 'Accueil' },
+    { href: '#about', label: 'À propos' },
+    { href: '#skills', label: 'Compétences' },
+    { href: '#projects', label: 'Projets' },
     { href: '#contact', label: 'Contact' },
   ];
 
+  const renderLink = (link) => (
+    <a
+      key={link.href}
+      href={link.href}
+      onClick={() => handleLinkClick(link.href)}
+      className={`flex items-center text-white hover:text-blue-400 transition duration-300 ${
+        activeLink === link.href ? 'font-bold' : ''
+      } ${link.href === '#contact' && activeLink !== link.href ? 'bg-gray-700 px-3 py-2 rounded-md' : ''}`}
+    >
+      {link.label}
+      {link.href === '#contact' && activeLink !== link.href && (
+        <span className="ml-1 text-white text-xl">→</span>
+      )}
+    </a>
+  );
+
   return (
     <nav className="bg-gray-800 sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <h1 className="text-white text-3xl font-bold">
-              Mickaelio<span className="text-blue-400 text-3xl">.</span>
-            </h1>
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
+        <div className="flex items-center justify-between h-20">
+          <h1 className="text-white text-3xl font-bold">
+            Mickaelio<span className="text-blue-400">.</span>
+          </h1>
           <div className="hidden md:flex space-x-12">
-            {links.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => handleLinkClick(link.href)}
-                className={`flex items-center text-white hover:text-blue-400 transition duration-300 ${
-                  activeLink === link.href ? 'font-bold' : ''
-                }`}
-              >
-                {link.label}
-                {activeLink === link.href && (
-                  <h1 className="ml-1 text-blue-400"></h1>
-                )}
-              </a>
-            ))}
+            {links.map(renderLink)}
           </div>
           <div className="md:hidden">
             <button onClick={toggleMenu} className="text-white focus:outline-none">
@@ -72,12 +70,9 @@ const Barnav = () => {
               onClick={() => handleLinkClick(link.href)}
               className={`flex items-center text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-600 ${
                 activeLink === link.href ? 'font-bold' : ''
-              }`}
+              } ${link.href === '#contact' && activeLink !== link.href ? 'bg-gray-700' : ''}`}
             >
               {link.label}
-              {activeLink === link.href && (
-                <h1 className="ml-1 text-blue-400"></h1>
-              )}
             </a>
           ))}
         </div>

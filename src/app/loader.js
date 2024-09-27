@@ -7,7 +7,7 @@ const Loader = ({ onComplete }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowText(true); 
-    }, 3000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -36,30 +36,12 @@ const Loader = ({ onComplete }) => {
               hidden: { opacity: 0, y: 50 },
               visible: { opacity: 1, y: 0 },
             }}
-            transition={{ type: 'spring', stiffness: 300 }}
+            transition={{ type: 'spring', stiffness: 100 }}
           >
             {letter}
           </motion.span>
         ))}
       </motion.div>
-
-      <motion.div
-        className="w-24 h-24 mt-8 border-4 border-blue-500 rounded-full"
-        animate={{ rotate: 360 }}
-        transition={{
-          repeat: Infinity,
-          duration: 2,
-          ease: 'linear',
-        }}
-      />
-      {showText && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: 0 }}
-          transition={{ delay: 2, duration: 1.5 }}
-          onAnimationComplete={onComplete}
-        />
-      )}
     </div>
   );
 };
