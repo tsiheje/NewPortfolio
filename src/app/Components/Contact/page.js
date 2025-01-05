@@ -47,7 +47,7 @@ const Contact = () => {
       name="message"
       value={formData.message}
       onChange={handleChange}
-      placeholder="Votre message"
+      placeholder="Your message"
       rows="6"
       required
       className="p-3 border border-gray-300 rounded-md mb-6 w-full"
@@ -63,9 +63,9 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col lg:px-16" id='contact'>
       <div className="mb-12">
-        <h1 className="text-4xl font-bold text-gray-800">Contactez-moi</h1>
+        <h1 className="text-4xl font-bold text-gray-800">Contact Me</h1>
         <p className="text-lg text-gray-700 mt-4">
-          Vous avez des questions, des idées ou souhaitez collaborer ? Je suis ici pour vous aider ! Contactez-moi via le formulaire ci-dessous, sur WhatsApp, ou directement par email. Je serai ravi de discuter avec vous et de transformer vos projets en réalité.
+            Have questions, ideas, or want to collaborate? I'm here to help! Reach out to me through the form below, on WhatsApp, or directly via email. I would be happy to discuss and turn your projects into reality.
         </p>
       </div>
       <div className='flex items-center flex-wrap gap-5'>
@@ -74,11 +74,11 @@ const Contact = () => {
           className="w-full max-w-2xl bg-white p-4 rounded-lg shadow-lg"
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-            {renderInput('name', 'text', 'Nom')}
+            {renderInput('name', 'text', 'Name')}
             {renderInput('email', 'email', 'Email')}
           </div>
           <div className='w-full'>
-            {renderInput('subject', 'text', 'Sujet')}
+            {renderInput('subject', 'text', 'Subject')}
           </div>
           <div>
             {renderTextarea()}
@@ -90,7 +90,7 @@ const Contact = () => {
               isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
-            {isSubmitting ? 'Envoi en cours...' : 'Envoyer'}
+            {isSubmitting ? 'Envoi en cours...' : 'Send'}
           </button>
           {submitStatus && (
             <p className="mt-4 text-green-600">{submitStatus}</p>

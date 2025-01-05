@@ -8,28 +8,28 @@ import Native from "../../Assets/Images/Native.png";
 const skillsData = [
     {
         id: 1,
-        title: "Technologie web et Langage de programmation",
+        title: "Web Technologies and Programming Languages",
         image: HTML,
         label: "HTML"
     },
     {
         id: 2,
-        title: "Frameworks et Librairies",
+        title: "Frameworks and Libraries",
         image: Native,
         label: "React.Js"
     },
     {
         id: 3,
-        title: "Systèmes de gestion de base de données",
+        title: "Database Management Systems",
         image: MySQL,
         label: "MySQL"
     },
     {
         id: 4,
-        title: "Outils",
+        title: "Tools",
         image: Ai,
         label: "Adobe Illustrator"
-    },
+    },    
 ];
 
 const SkillItem = ({ skill, isOpen, toggle }) => (
@@ -64,9 +64,9 @@ const Skills = () => {
     return (
         <div className="min-h-screen bg-gray-100 lg:px-16" id="skills">
             <div className="flex flex-col gap-8">
-                <h1 className="text-4xl font-bold text-gray-800">Mes compétences</h1>
+                <h1 className="text-4xl font-bold text-gray-800">My Skills</h1>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    🌟 Fort d'une expérience diversifiée, je maîtrise un large éventail de compétences techniques et créatives qui me permettent de transformer des idées en solutions innovantes.
+                    🌟 With a diverse experience, I master a wide range of technical and creative skills that allow me to turn ideas into innovative solutions.
                 </p>
                 <div className="flex flex-col gap-8">
                     {skillsData.map((skill, index) => (
