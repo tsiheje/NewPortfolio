@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaFacebook, FaTwitter, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaFacebook, FaTwitter, FaLinkedin, FaGithub, FaSkype } from "react-icons/fa";
+import sariko from "../../Assets/Images/profile-pic.png";
 
 const socialLinks = [
   {
@@ -18,6 +19,11 @@ const socialLinks = [
     label: "GitHub",
     icon: <FaGithub size={50} />,
   },
+  {
+    href: "https://github.com/tsiheje",
+    label: "Skype",
+    icon: <FaSkype size={50} />,
+  },
 ];
 
 const Homepage = () => {
@@ -29,12 +35,11 @@ const Homepage = () => {
           animate={{ opacity: 1, x: 0 }} 
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Bonjour !</h1>
-          <h2 className="text-3xl font-semibold text-gray-700 mb-6">
-            Je suis <span className="text-blue-500 text-6xl">Mickaelio</span>
-          </h2>
+          <h1 className="text-3xl font-semibold text-gray-700 mb-6">
+            Hello, I'm <span className="text-blue-500 text-6xl">Mickaelio</span>
+          </h1>
           <p className="text-lg text-gray-600 mb-8">
-            Développeur front-end passionné et intégrateur web spécialisé en React, je transforme vos idées en expériences numériques mémorables. 🌟 Que vous soyez local ou international, je m'engage à créer des solutions web innovantes et performantes pour répondre à vos besoins. 🚀
+            🌟 Passionate front-end developer and web integrator specializing in <span className="text-blue-500">React</span>, turning your ideas into memorable digital experiences. 🚀
           </p>
           <div className="flex gap-6">
             {socialLinks.map(({ href, label, icon }) => (
@@ -60,12 +65,11 @@ const Homepage = () => {
           transition={{ delay: 0.5, duration: 0.8 }}
         >
           <Image 
-            src="/path-to-your-image.jpg" 
+            src={sariko}
             alt="Mickaelio" 
             layout="responsive" 
-            width={160} 
-            height={160} 
-            className="rounded-full" // Optionnel pour une image ronde
+            width={80} 
+            height={80} 
           />
         </motion.div>
       </div>

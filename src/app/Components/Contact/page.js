@@ -23,7 +23,6 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus('');
 
-    // Simulate an API call
     setTimeout(() => {
       setSubmitStatus('Votre message a été envoyé avec succès !');
       setIsSubmitting(false);
@@ -78,8 +77,12 @@ const Contact = () => {
             {renderInput('name', 'text', 'Nom')}
             {renderInput('email', 'email', 'Email')}
           </div>
-          {renderInput('subject', 'text', 'Sujet')}
-          {renderTextarea()}
+          <div className='w-full'>
+            {renderInput('subject', 'text', 'Sujet')}
+          </div>
+          <div>
+            {renderTextarea()}
+          </div>
           <button
             type="submit"
             disabled={isSubmitting}

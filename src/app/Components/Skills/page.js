@@ -65,8 +65,8 @@ const Skills = () => {
         <div className="min-h-screen bg-gray-100 lg:px-16" id="skills">
             <div className="flex flex-col gap-8">
                 <h1 className="text-4xl font-bold text-gray-800">Mes compétences</h1>
-                <p>
-                    Fort d'une expérience diversifiée, je maîtrise un large éventail de compétences techniques et créatives qui me permettent de transformer des idées en solutions innovantes.
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    🌟 Fort d'une expérience diversifiée, je maîtrise un large éventail de compétences techniques et créatives qui me permettent de transformer des idées en solutions innovantes.
                 </p>
                 <div className="flex flex-col gap-8">
                     {skillsData.map((skill, index) => (

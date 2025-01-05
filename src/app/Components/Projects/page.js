@@ -46,7 +46,7 @@ const Projects = () => {
         <div className="min-h-screen bg-gray-100 lg:px-16" id="projects">
             <div className="flex flex-col gap-8">
                 <h1 className="text-4xl font-bold text-gray-800">Mes projets</h1>
-                <p>
+                <p className="text-lg text-gray-700 leading-relaxed">
                     🌟 Explorez mes projets innovants, où j'applique mes compétences en développement front-end pour créer des solutions web uniques et performantes qui répondent aux besoins des utilisateurs.
                 </p>
                 <div className="flex flex-col items-center justify-center flex-wrap gap-3">

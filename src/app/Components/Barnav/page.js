@@ -13,10 +13,10 @@ const Barnav = () => {
   };
 
   const links = [
-    { href: '#home', label: 'Accueil' },
-    { href: '#about', label: 'À propos' },
-    { href: '#skills', label: 'Compétences' },
-    { href: '#projects', label: 'Projets' },
+    { href: '#home', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#projects', label: 'Projects' },
     { href: '#contact', label: 'Contact' },
   ];
 
