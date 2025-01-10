@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState, useEffect } from 'react';
 
 const Barnav = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('#home');
+  const [hasBackground, setHasBackground] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -11,6 +11,16 @@ const Barnav = () => {
     setActiveLink(link);
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Change background if the user scrolls past a certain point
+      setHasBackground(window.scrollY > 50); // Adjust 50 as needed
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const links = [
     { href: '#home', label: 'Home' },
@@ -37,7 +47,11 @@ const Barnav = () => {
   );
 
   return (
-    <nav className="bg-gray-800 sticky top-0 z-50">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition duration-300 ${
+        hasBackground ? 'bg-gray-800' : 'bg-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">
         <div className="flex items-center justify-between h-20">
           <h1 className="text-white text-3xl font-bold">
