@@ -14,8 +14,7 @@ const Barnav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Change background if the user scrolls past a certain point
-      setHasBackground(window.scrollY > 50); // Adjust 50 as needed
+      setHasBackground(window.scrollY > 50); 
     };
 
     window.addEventListener('scroll', handleScroll);

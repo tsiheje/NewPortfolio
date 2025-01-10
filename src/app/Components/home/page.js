@@ -30,7 +30,6 @@ const socialLinks = [
 const Homepage = () => {
   return (
     <div id="home" className="relative min-h-screen w-full">
-      {/* Background fixed */}
       <div className="absolute inset-0 w-full h-full z-0">
         <Image 
           src={bgimage}
@@ -42,7 +41,6 @@ const Homepage = () => {
         />
         <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       </div>
-      {/* Content of the home section */}
       <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center min-h-screen w-full px-4 sm:px-6 lg:px-16 py-36 lg:py-40">
         <div className="w-full lg:w-1/2 max-w-2xl lg:mr-8">
           <motion.div 
