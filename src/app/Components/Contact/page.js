@@ -61,7 +61,7 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col lg:px-16" id='contact'>
+    <div className="min-h-screen bg-gray-100 flex flex-col lg:px-16 py-24" id='contact'>
       <div className="mb-12">
         <h1 className="text-4xl font-bold text-gray-800">Contact Me</h1>
         <p className="text-lg text-gray-700 mt-4">

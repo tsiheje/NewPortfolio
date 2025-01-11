@@ -14,7 +14,7 @@ const Barnav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setHasBackground(window.scrollY > 50); 
+      setHasBackground(window.scrollY > 600); 
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -48,7 +48,7 @@ const Barnav = () => {
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition duration-300 ${
-        hasBackground ? 'bg-gray-800' : 'bg-transparent'
+        hasBackground ? 'bg-gray-800/95' : 'bg-transparent/40'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-6">

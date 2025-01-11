@@ -1,4 +1,6 @@
+import Image from "next/image";
 import { motion } from "framer-motion";
+import sary from "../../Assets/Images/sariko.png";
 
 const skills = [
   {
@@ -29,17 +31,36 @@ const skills = [
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center lg:px-16 w-full" id="about">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center lg:px-16 w-full py-24" id="about">
       <div className="mb-12">
       <h1 className="text-4xl font-bold text-gray-800">About Me</h1>
-        <div>
-        <p className="text-lg text-gray-700 mt-4 leading-relaxed">
-          🚀 I'm Mickaelio, an enthusiastic front-end developer specializing in React.js and a passionate web integrator! 💻 My goal is to transform ideas into captivating and high-performing digital experiences. 🌟 Whether it's creating intuitive interfaces or optimizing loading speeds, I strive to deliver innovative web solutions that delight users while adhering to the highest quality standards.
-        </p>
-        <p className="text-lg text-gray-700 mt-4 leading-relaxed">
-          To learn more about me and my skills, check out my <a href="/path-to-your-cv.pdf" className="bg-blue-500 text-white text-xl py-3 px-5 rounded-lg shadow-lg" target="_blank" rel="noopener noreferrer">Download CV</a>
-        </p>
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl mx-auto">
+        <div className="w-full md:w-1/3">
+          <Image
+            src={sary}
+            width={250}
+            height={250}
+            className="rounded-lg mx-auto"
+            alt="Profile picture"
+          />
         </div>
+        <div className="w-full md:w-2/3">
+          <p className="text-lg text-gray-700 leading-relaxed">
+            🚀 I'm Mickaelio, an enthusiastic front-end developer specializing in React.js and a passionate web integrator! 💻 My goal is to transform ideas into captivating and high-performing digital experiences. 🌟 Whether it's creating intuitive interfaces or optimizing loading speeds, I strive to deliver innovative web solutions that delight users while adhering to the highest quality standards.
+          </p>
+          <p className="text-lg text-gray-700 mt-4 leading-relaxed">
+            Want to see my complete skillset and experience? {" "}
+            <a 
+              href="/files/Rasolofoniaina Tsiheje Marie Mickaelio.pdf"  
+              className="inline-block bg-blue-500 hover:bg-blue-600 text-white text-xl py-3 px-5 rounded-lg shadow-lg transition-colors duration-300" 
+              target="_blank" 
+              rel="noopener noreferrer"
+            >
+              Curriculum Vitae
+            </a>
+          </p>
+        </div>
+      </div>
       </div>
       <div className="flex items-center justify-center flex-wrap gap-8 w-full mb-12">
         {skills.map((skill, index) => (

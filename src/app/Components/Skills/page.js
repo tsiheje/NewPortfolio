@@ -62,7 +62,7 @@ const Skills = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 lg:px-16" id="skills">
+        <div className="min-h-screen bg-gray-100 lg:px-16 py-24" id="skills">
             <div className="flex flex-col gap-8">
                 <h1 className="text-4xl font-bold text-gray-800">My Skills</h1>
                 <p className="text-lg text-gray-700 leading-relaxed">
