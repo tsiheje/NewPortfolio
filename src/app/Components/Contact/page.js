@@ -61,11 +61,11 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col lg:px-16 py-24" id='contact'>
+    <div className="min-h-screen bg-gray-100 flex flex-col lg:px-16 pt-24 pb-8" id='contact'>
       <div className="mb-12">
         <h1 className="text-4xl font-bold text-gray-800">Contact Me</h1>
         <p className="text-lg text-gray-700 mt-4">
-            Have questions, ideas, or want to collaborate? I'm here to help! Reach out to me through the form below, on WhatsApp, or directly via email. I would be happy to discuss and turn your projects into reality.
+          🌟 Have questions, ideas, or a desire to collaborate? Don’t hesitate to get in touch—I’m here to assist! Whether through the form below, on WhatsApp, or directly via email, I’m always happy to connect, discuss your vision, and work together to bring your projects to life.
         </p>
       </div>
       <div className='flex items-center flex-wrap gap-5'>

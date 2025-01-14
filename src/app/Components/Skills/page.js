@@ -62,11 +62,11 @@ const Skills = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 lg:px-16 py-24" id="skills">
+        <div className="min-h-screen bg-gray-100 lg:px-16 pt-24" id="skills">
             <div className="flex flex-col gap-8">
                 <h1 className="text-4xl font-bold text-gray-800">My Skills</h1>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    🌟 With a diverse experience, I master a wide range of technical and creative skills that allow me to turn ideas into innovative solutions.
+                    🌟With a diverse background of experience, I excel in a broad range of technical and creative skills, enabling me to transform ideas into innovative solutions by combining expertise, ingenuity, and a forward-thinking approach to tackle even the most complex challenges.
                 </p>
                 <div className="flex flex-col gap-8">
                     {skillsData.map((skill, index) => (

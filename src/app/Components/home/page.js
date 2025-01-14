@@ -54,7 +54,7 @@ const Homepage = () => {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
                 Hello!👋
               </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">I'm, <span className="text-blue-300 mt-2 text-5xl sm:text-7xl lg:text-8xl">Mickaelio</span></h1>
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">I'm, <span className="text-blue-400 mt-2 text-5xl sm:text-7xl lg:text-8xl">Mickaelio</span></h1>
             </div>
             <p className="text-base sm:text-lg text-gray-200">
               🌟 A dedicated front-end developer and web integrator with a passion for crafting seamless user experiences. 

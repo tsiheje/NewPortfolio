@@ -31,18 +31,23 @@ const skills = [
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center lg:px-16 w-full py-24" id="about">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center lg:px-16 w-full pt-24" id="about">
       <div className="mb-12">
       <h1 className="text-4xl font-bold text-gray-800">About Me</h1>
-      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl mx-auto">
+      <div className="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl mx-auto mt-10">
         <div className="w-full md:w-1/3">
           <Image
             src={sary}
-            width={250}
-            height={250}
+            width={260}
+            height={260}
             className="rounded-lg mx-auto"
             alt="Profile picture"
           />
+        </div>
+        <div className="hidden md:flex items-center flex-col gap-5">
+          <div className="w-1 h-28 bg-gray-800 rounded"></div>
+          <div className="w-5 h-5 rounded-full border-4 border-gray-800"></div>
+          <div className="w-1 h-28 bg-gray-800 rounded"></div>
         </div>
         <div className="w-full md:w-2/3">
           <p className="text-lg text-gray-700 leading-relaxed">
@@ -66,7 +71,7 @@ const About = () => {
         {skills.map((skill, index) => (
           <motion.div 
             key={index}
-            className={`${skill.bgColor} rounded-lg shadow-lg p-6 w-[500px]`}
+            className={`${skill.bgColor} rounded-lg shadow-lg p-6 w-[520px] h-[180px]`}
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >

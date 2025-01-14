@@ -22,32 +22,32 @@ const settings = {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
 };
 
 const ProjectSlider = () => (
     <Slider {...settings}>
         {images.map(({ src, alt }) => (
             <div key={alt}>
-                <Image src={src} alt={alt} className="rounded-lg w-full h-[50px] object-cover" />
+                <Image src={src} alt={alt} className="rounded-lg w-[400px] h-[400px] object-cover" />
             </div>
         ))}
     </Slider>
 );
 
 const ProjectCard = () => (
-    <div className="flex flex-col bg-white rounded-lg shadow-lg p-6 w-full h-[450px]">
+    <div className="flex flex-col bg-white rounded-lg shadow-lg p-6 w-full h-[500px]">
         <ProjectSlider />
     </div>
 );
 
 const Projects = () => {
     return (
-        <div className="min-h-screen bg-gray-100 lg:px-16 py-24" id="projects">
+        <div className="min-h-screen bg-gray-100 lg:px-16 pt-24" id="projects">
             <div className="flex flex-col gap-8">
                 <h1 className="text-4xl font-bold text-gray-800">My Projects</h1>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                    🌟 Explore my innovative projects, where I apply my front-end development skills to create unique and high-performing web solutions that meet user needs.
+                    🌟 Dive into my innovative projects, where I leverage my expertise in front-end development to design and implement distinctive, high-performing web solutions that not only meet but exceed user expectations, combining creativity, technical precision, and a user-centered approach to deliver exceptional digital experiences.
                 </p>
                 <div className="flex flex-col items-center justify-center flex-wrap gap-3">
                     <ProjectCard />
