@@ -30,7 +30,7 @@ const socialLinks = [
 
 const Homepage = () => {
   return (
-    <div id="home" className="relative h-[100vh] w-full">
+    <section id="home" className="h-screen w-full">
       <div className="absolute inset-0 w-full h-full z-0">
         <Image 
           src={bgimage}
@@ -80,7 +80,8 @@ const Homepage = () => {
             </div>
           </motion.div>
         </div>
-        <div className="w-full lg:w-1/2 flex justify-center">
+        {/* Cacher l'image sur les petits écrans */}
+        <div className="w-full lg:w-1/2 flex justify-center lg:block hidden">
           <motion.div 
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
@@ -96,8 +97,9 @@ const Homepage = () => {
           </motion.div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
+
 
 export default Homepage;

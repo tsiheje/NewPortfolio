@@ -31,7 +31,7 @@ const skills = [
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center lg:px-16 w-full pt-24" id="about">
+    <section className="min-h-screen bg-gray-100 flex flex-col items-center lg:px-16 w-full pt-24" id="about">
       <div className="mb-12">
       <h1 className="text-4xl font-bold text-gray-800">About Me</h1>
       <div className="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl mx-auto mt-10">
@@ -82,7 +82,7 @@ const About = () => {
           </motion.div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

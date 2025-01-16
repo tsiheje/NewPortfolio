@@ -43,7 +43,7 @@ const ProjectCard = () => (
 
 const Projects = () => {
     return (
-        <div className="min-h-screen bg-gray-100 lg:px-16 pt-24" id="projects">
+        <section className="min-h-screen bg-gray-100 lg:px-16 pt-24" id="projects">
             <div className="flex flex-col gap-8">
                 <h1 className="text-4xl font-bold text-gray-800">My Projects</h1>
                 <p className="text-lg text-gray-700 leading-relaxed">
@@ -57,7 +57,7 @@ const Projects = () => {
                     <ProjectCard />
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 
