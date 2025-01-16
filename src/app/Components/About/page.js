@@ -55,10 +55,10 @@ const About = () => {
             </div>
             <div className="w-full md:w-2/3">
               <p className="text-lg text-gray-700 leading-relaxed mb-6">
-                🚀 I'm Mickaelio, an enthusiastic front-end developer specializing in React.js and a passionate web integrator! 💻 My goal is to transform ideas into captivating and high-performing digital experiences. 🌟 Whether it's creating intuitive interfaces or optimizing loading speeds, I strive to deliver innovative web solutions that delight users while adhering to the highest quality standards.
+                🚀 I`&apos;`m Mickaelio, an enthusiastic front-end developer specializing in React.js and a passionate web integrator! 💻 My goal is to transform ideas into captivating and high-performing digital experiences. 🌟 Whether it's creating intuitive interfaces or optimizing loading speeds, I strive to deliver innovative web solutions that delight users while adhering to the highest quality standards.
               </p>
               <p className="text-lg text-gray-700 mt-4 mb-6 leading-relaxed">
-                Would you like to explore my full range of skills, experience, and the diverse projects I've worked on, showcasing my expertise and passion for creating impactful digital solutions?
+                Would you like to explore my full range of skills, experience, and the diverse projects I`&apos;`ve worked on, showcasing my expertise and passion for creating impactful digital solutions?
               </p>
               <p>
                 <a 
