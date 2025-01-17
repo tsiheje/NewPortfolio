@@ -30,7 +30,7 @@ const Homepage = () => {
   ];
 
   const handleSocialClick = (e, href) => {
-    e.stopPropagation(); // Empêche la propagation de l'événement
+    e.stopPropagation();
     window.open(href, '_blank', 'noopener,noreferrer');
   };
 
@@ -68,7 +68,7 @@ const Homepage = () => {
               Specializing in <span className="text-blue-400">React</span>, I transform ideas into impactful and memorable digital solutions. 🚀
             </p>
             <div className="pt-12 sm:pt-16 lg:pt-24">
-              <div className="flex flex-wrap gap-4 sm:gap-6">
+              <div className="flex flex-wrap gap-4 sm:gap-6 ">
                 {socialLinks.map(({ href, label, icon }) => (
                   <motion.button
                     key={label}
