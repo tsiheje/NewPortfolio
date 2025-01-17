@@ -1,6 +1,7 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import Image from "next/image";
 import Loader from './loader';
 import Barnav from './Components/Barnav/page';
 import Homepage from './Components/home/page';
@@ -21,18 +22,22 @@ export default function Home() {
     }, 2700);
 
     const handleNavClick = (e) => {
-      const targetId = e.target.getAttribute('href')?.replace('#', '');
-      if (targetId) {
+      // Vérifie si le lien cliqué est un lien de navigation interne
+      const href = e.target.getAttribute('href');
+      if (href?.startsWith('#')) {
         e.preventDefault();
-        const targetElement = document.getElementById(targetId);
-        if (targetElement) {
+        const targetId = href.replace('#', '');
+        if (targetId) {
           if (targetId === 'home') {
             window.scrollTo({
               top: 0,
               behavior: 'smooth'
             });
           } else {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
           }
         }
       }
@@ -65,7 +70,7 @@ export default function Home() {
             <Barnav />
           </div>
           <div className="relative w-full">
-            <div className="fixed top-0 left-0 w-full h-screen">
+            <div className="sticky top-0 left-0 w-full h-screen">
               <Homepage />
             </div>
             <div className="relative">
