@@ -1,7 +1,7 @@
+import Image from 'next/image';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Image from 'next/image';
 import HTML from "../../Assets/Images/Html.png";
 import Ai from "../../Assets/Images/Ai.png";
 import MySQL from "../../Assets/Images/Mysql.png";
