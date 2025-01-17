@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import sary from "../../Assets/Images/sariko.png";
-import { FaArrowRight } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
 
 const skills = [
   {
@@ -35,7 +35,7 @@ const About = () => {
     <section className="min-h-screen bg-gray-100 flex flex-col items-center lg:px-16 w-full pt-24" id="about">
         <div className="mb-12 w-full">
           <h1 className="text-4xl font-bold text-gray-800 text-center md:text-left flex items-center gap-5">
-            <FaArrowRight className="text-blue-500" />
+            <FaUser className="text-blue-500" />
             About Me
           </h1>
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-6xl mx-auto mt-10 px-4">

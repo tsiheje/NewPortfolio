@@ -42,7 +42,7 @@ const Homepage = () => {
         />
         <div className="absolute inset-0 bg-black/95" />
       </div>
-      <div className="relative z-10 flex flex-col lg:flex-row items-center justify-center min-h-screen w-full px-4 sm:px-6 lg:px-16 py-36 lg:py-40">
+      <div className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full px-4 sm:px-6 lg:px-16 py-36 lg:py-40">
         <div className="w-full lg:w-1/2 max-w-2xl lg:mr-8">
           <motion.div 
             initial={{ opacity: 0, x: -50 }} 
@@ -81,7 +81,7 @@ const Homepage = () => {
           </motion.div>
         </div>
         {/* Cacher l'image sur les petits écrans */}
-        <div className="w-full lg:w-1/2 flex justify-center lg:block hidden">
+        <div className="w-full lg:w-1/2 lg:block hidden">
           <motion.div 
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
@@ -93,6 +93,7 @@ const Homepage = () => {
               width={350}
               height={350}
               priority
+              className="ml-32"
             />
           </motion.div>
         </div>
