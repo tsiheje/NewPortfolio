@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion';
+'use client'; 
+
 import { useEffect, useState } from 'react';
 
 const Loader = ({ onComplete }) => {
@@ -6,42 +7,36 @@ const Loader = ({ onComplete }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowText(true); 
+      setShowText(true);
+      if (onComplete) {
+        onComplete();
+      }
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [onComplete]);
 
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-gray-900 z-10">
-      <motion.div
-        className="text-white text-6xl font-bold flex space-x-4"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              delayChildren: 0.5,
-              staggerChildren: 0.2, 
-            },
-          },
-        }}
+      <div
+        className={`text-white text-6xl font-bold flex space-x-4 transition-opacity duration-700 ${
+          showText ? 'opacity-100' : 'opacity-0'
+        }`}
       >
         {'Mickaelio'.split('').map((letter, index) => (
-          <motion.span
+          <span
             key={index}
-            variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0 },
+            className="transition-transform duration-500 ease-out transform"
+            style={{
+              transitionDelay: `${index * 100}ms`,
+              transform: showText ? 'translateY(0)' : 'translateY(50px)',
+              opacity: showText ? 1 : 0,
             }}
-            transition={{ type: 'spring', stiffness: 100 }}
           >
             {letter}
-          </motion.span>
+          </span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 };

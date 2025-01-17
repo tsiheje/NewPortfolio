@@ -22,7 +22,6 @@ export default function Home() {
     }, 2700);
 
     const handleNavClick = (e) => {
-      // Vérifie si le lien cliqué est un lien de navigation interne
       const href = e.target.getAttribute('href');
       if (href?.startsWith('#')) {
         e.preventDefault();
