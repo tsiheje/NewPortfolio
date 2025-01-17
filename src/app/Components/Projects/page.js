@@ -16,7 +16,7 @@ const images = [
 ];
 
 const settings = {
-    dots: true, // active dots pour la navigation
+    dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
@@ -41,24 +41,25 @@ const ProjectCard = () => (
     </div>
 );
 
-const Projects = () => (
-    <section className="min-h-screen bg-gray-100 lg:px-16 pt-24" id="projects">
-        <div className="flex flex-col gap-8">
-            <h1 className="text-4xl font-bold text-gray-800 flex items-center gap-3">
-                <FaFolderOpen className="text-blue-500" />
-                My Projects
-            </h1>
-            <p className="text-lg text-gray-700 leading-relaxed">
-                🌟 Dive into my innovative projects, where I leverage my expertise in front-end development to design and implement distinctive, high-performing web solutions that not only meet but exceed user expectations, combining creativity, technical precision, and a user-centered approach to deliver exceptional digital experiences.
-            </p>
-            <div className="flex flex-col items-center justify-center flex-wrap gap-3">
-                {/* Affichez plusieurs ProjectCard */}
-                {[...Array(5)].map((_, index) => (
-                    <ProjectCard key={index} />
-                ))}
+const Projects = () => {
+    return (
+        <section className="min-h-screen bg-gray-100 lg:px-16 pt-24" id="projects">
+            <div className="flex flex-col gap-8">
+                <h1 className="text-4xl font-bold text-gray-800 flex items-center gap-3">
+                    <FaFolderOpen className="text-blue-500" />
+                    My Projects
+                </h1>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                    🌟 Dive into my innovative projects, where I leverage my expertise in front-end development to design and implement distinctive, high-performing web solutions that not only meet but exceed user expectations, combining creativity, technical precision, and a user-centered approach to deliver exceptional digital experiences.
+                </p>
+                <div className="flex flex-col items-center justify-center flex-wrap gap-3">
+                    {[...Array(5)].map((_, index) => (
+                        <ProjectCard key={index} />
+                    ))}
+                </div>
             </div>
-        </div>
-    </section>
-);
+        </section>
+    );
+};
 
 export default Projects;
