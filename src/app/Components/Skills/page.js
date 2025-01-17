@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import HTML from "../../Assets/Images/Html.png";
 import Ai from "../../Assets/Images/Ai.png";

@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub, FaSkype } from "react-icons/fa";
 import bgimage from "../../Assets/Images/bgimage.jpg";

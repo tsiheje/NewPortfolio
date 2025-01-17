@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import sary from "../../Assets/Images/sariko.png";
 import { FaUser } from "react-icons/fa";
