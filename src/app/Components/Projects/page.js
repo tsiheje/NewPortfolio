@@ -1,4 +1,3 @@
-import React from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -25,23 +24,24 @@ const settings = {
     autoplaySpeed: 2000,
 };
 
-const ProjectSlider = () => (
-    <Slider {...settings}>
-        {images.map(({ src, alt }) => (
-            <div key={alt}>
-                <Image src={src} alt={alt} className="rounded-lg w-[400px] h-[400px] object-cover" />
-            </div>
-        ))}
-    </Slider>
-);
-
-const ProjectCard = () => (
-    <div className="flex flex-col bg-white rounded-lg shadow-lg p-6 w-full h-[500px]">
-        <ProjectSlider />
-    </div>
-);
-
 const Projects = () => {
+
+    const ProjectSlider = () => (
+        <Slider {...settings}>
+            {images.map(({ src, alt }) => (
+                <div key={alt}>
+                    <Image src={src} alt={alt} className="rounded-lg w-[400px] h-[400px] object-cover" />
+                </div>
+            ))}
+        </Slider>
+    );
+    
+    const ProjectCard = () => (
+        <div className="flex flex-col bg-white rounded-lg shadow-lg p-6 w-full h-[500px]">
+            <ProjectSlider />
+        </div>
+    );
+
     return (
         <section className="min-h-screen bg-gray-100 lg:px-16 pt-24" id="projects">
             <div className="flex flex-col gap-8">
