@@ -58,14 +58,14 @@ const About = () => {
             <div className="w-1 h-40 bg-gray-800 rounded"></div>
           </div>
           <div className="w-full md:w-2/3">
-            <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            <p className="text-lg text-gray-700 leading-relaxed mb-5">
               🚀 I&apos;m Mickaelio, an enthusiastic front-end developer specializing in React.js and a
               passionate web integrator! 💻 My goal is to transform ideas into captivating and
               high-performing digital experiences. 🌟 Whether it&apos;s creating intuitive interfaces or
               optimizing loading speeds, I strive to deliver innovative web solutions that delight users
               while adhering to the highest quality standards.
             </p>
-            <p className="text-lg text-gray-700 mt-4 mb-6 leading-relaxed">
+            <p className="text-lg text-gray-700 mt-4 mb-5 leading-relaxed">
               Would you like to explore my full range of skills, experience, and the diverse projects
               I&apos;ve worked on, showcasing my expertise and passion for creating impactful digital
               solutions?
@@ -73,7 +73,7 @@ const About = () => {
             <p>
               <a
                 href="/files/Rasolofoniaina Tsiheje Marie Mickaelio.pdf"
-                className="inline-block bg-blue-500 hover:bg-blue-600 text-white text-xl py-3 px-5 rounded-lg shadow-lg transition-colors duration-300 mt-6"
+                className="inline-block bg-blue-500 hover:bg-blue-600 text-white text-xl py-3 px-5 rounded-lg shadow-lg transition-colors duration-300 mt-4"
                 target="_blank"
                 rel="noopener noreferrer"
               >

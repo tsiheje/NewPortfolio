@@ -1,5 +1,7 @@
 "use client";
 import Image from "next/image";
+import { FaTools } from "react-icons/fa";
+import { motion } from "framer-motion";
 import HTML from "../../Assets/Images/Html.png";
 import Ai from "../../Assets/Images/Ai.png";
 import MySQL from "../../Assets/Images/Mysql.png";
@@ -17,8 +19,7 @@ import Postgre from "../../Assets/Images/Postgre.png";
 import Tailwind from "../../Assets/Images/Tailwind.png";
 import Ps from "../../Assets/Images/Ps.png";
 import typescript from "../../Assets/Images/typescript.png";
-import { FaTools } from "react-icons/fa";
-import { motion } from "framer-motion";
+import mui from "../../Assets/Images/mui.png";
 
 const categorizedSkills = {
   "Frontend Development": [
@@ -34,6 +35,7 @@ const categorizedSkills = {
     { id: 11, image: Next, label: "Next.js" },
     { id: 12, image: Node, label: "Node.js" },
     { id: 8, image: Ex, label: "Express.js" },
+    { id: 19, image: mui, label: "Material UI" },
   ],
   "Backend & Databases": [
     { id: 13, image: PHP, label: "PHP" },
@@ -96,7 +98,7 @@ const Skills = () => {
             className="space-y-12"
           >
             {Object.entries(categorizedSkills).map(([category, skills], categoryIndex) => (
-              <div key={category} className="space-y-5">
+              <div key={category} className="space-y-6">
                 <div className="flex items-center gap-4">
                   <h2 className="text-2xl font-semibold text-gray-800">
                     {category}
@@ -110,7 +112,7 @@ const Skills = () => {
                       variants={itemVariants}
                       className="group"
                     >
-                      <div className="relative rounded-xl hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                      <div className="relative rounded-xl transition-all duration-300 transform hover:-translate-y-1">
                         <div className="flex items-center gap-2">
                           <div className="relative  w-12 h-12">
                             <Image
