@@ -36,9 +36,9 @@ const skills = [
 
 const About = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-br to-gray-100 px-6 lg:px-16 pt-24" id="about">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-800 lg:text-left flex items-center gap-3">
+    <section className="min-h-screen bg-gray-100 flex flex-col items-center lg:px-16 w-full pt-24" id="about">
+      <div className="mb-12 w-full">
+        <h1 className="text-4xl font-bold text-gray-800 text-center flex items-center gap-5 ml-5">
           <FaUser className="text-blue-500" />
           ABOUT ME
         </h1>
@@ -83,7 +83,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <div className="flex items-center justify-center flex-wrap gap-8 w-full mt-12 px-4">
+      <div className="flex items-center justify-center flex-wrap gap-8 w-full mb-12 px-4">
         {skills.map((skill, index) => (
           <div
             key={index}
