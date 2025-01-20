@@ -8,6 +8,7 @@ const Loader = ({ onComplete }) => {
     const timer = setTimeout(() => {
       if (onComplete) {
         onComplete();
+      }
     }, 3000); 
 
     return () => clearTimeout(timer); 
