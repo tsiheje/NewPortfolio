@@ -80,38 +80,38 @@ const Projects = () => {
     {
       images: [contact, contact, contact],
       title: "Ancien Portfolio",
-      description: "Une description détaillée du projet, expliquant ses fonctionnalités principales et son impact.",
-      technologies: ["React", "Next.js", "Tailwind CSS", "Node.js"],
+      description: "To showcase my projects and skills, demonstrating my creativity and ability to craft attractive interfaces.",
+      technologies: ["React.js", "Tailwind CSS", "GSAP Animation"],
     },
     {
       images: [contact, contact, contact],
       title: "Critical Path Methode",
-      description: "Description du deuxième projet mettant en avant ses caractéristiques uniques.",
-      technologies: ["TypeScript", "React", "MongoDB", "Express"],
+      description: "Developing a web application for task scheduling using the Critical Path Method (CPM)",
+      technologies: ["React.js", "Tailwind CSS", "Reactflow"],
     },
     {
       images: [contact, contact, contact],
       title: "One Note",
-      description: "Présentation du troisième projet et de ses aspects innovants.",
-      technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+      description: "Creating a web platform for easy access to information, courses, and assignments, enhancing communication and education.",
+      technologies: ["React.js", "Node.js", "Express.js", "MySQL"],
     },
     {
         images: [contact, contact, contact],
         title: "RapidePrime",
-        description: "Présentation du troisième projet et de ses aspects innovants.",
-        technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+        description: "Integration of Rapide Prime's website.",
+        technologies: ["Next.js", "Tailwind CSS", "GSAP Animation"],
     },
     {
         images: [contact, contact, contact],
         title: "Mi-krea",
-        description: "Présentation du troisième projet et de ses aspects innovants.",
-        technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+        description: "Integration of Mi-Krea's website.",
+        technologies: ["Next.js", "GSAP Animation"],
     },
     {
         images: [contact, contact, contact],
         title: "Enjoy'B",
         description: "Présentation du troisième projet et de ses aspects innovants.",
-        technologies: ["Vue.js", "Firebase", "Tailwind CSS"],
+        technologies: ["Next.js", "Tailwind CSS", "Node.js", "Express.js", "MySQL"],
     }
   ];
 
