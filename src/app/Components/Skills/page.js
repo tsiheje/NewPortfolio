@@ -99,12 +99,15 @@ const Skills = () => {
           >
             {Object.entries(categorizedSkills).map(([category, skills], categoryIndex) => (
               <div key={category} className="space-y-6">
-                <div className="flex items-center gap-4">
+                <motion.div
+                  variants={itemVariants}
+                  className="flex items-center gap-4"
+                >
                   <h2 className="text-2xl font-semibold text-gray-800">
                     {category}
                   </h2>
                   <div className="h-px flex-grow bg-gradient-to-r from-blue-200 to-transparent" />
-                </div>
+                </motion.div>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
                   {skills.map((skill, index) => (
                     <motion.div

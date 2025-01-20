@@ -2,6 +2,7 @@
 import { FaFolderOpen, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Image from 'next/image';
 import { useState } from 'react';
+import { motion } from 'framer-motion'; // Import motion
 import contact from "../../Assets/Images/contact.jpg";
 import pt1 from "../../Assets/Images/pt/pt1.png";
 import pt2 from "../../Assets/Images/pt/pt2.png";
@@ -20,7 +21,7 @@ import on3 from "../../Assets/Images/on/onenote3.png";
 import ro1 from "../../Assets/Images/ro/ro1.png";
 import ro2 from "../../Assets/Images/ro/ro2.png";
 
-
+// Image Gallery Component
 const ImageGallery = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -70,9 +71,15 @@ const ImageGallery = ({ images }) => {
   );
 };
 
+// Project Card Component
 const ProjectCard = ({ images, title, description, technologies, link }) => {
   return (
-    <div className="relative bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-[1.02] w-full p-2 group">
+    <motion.div
+      className="relative bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-[1.02] w-full p-2 group"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+    >
       <ImageGallery images={images} />
       <div className="p-4 space-y-3">
         <h3 className="text-xl font-bold text-gray-800">{title}</h3>
@@ -100,10 +107,11 @@ const ProjectCard = ({ images, title, description, technologies, link }) => {
           </a>
         </div>
       )}
-    </div>
+    </motion.div>
   );
 };
 
+// Main Projects Component
 const Projects = () => {
   const projects = [
     {
@@ -148,13 +156,23 @@ const Projects = () => {
   return (
     <section className="min-h-screen bg-gray-100 px-6 lg:px-16 pt-24" id="projects">
       <div className="flex flex-col gap-8">
-        <h1 className="text-4xl font-bold text-gray-800 flex items-center gap-3">
+        <motion.h1
+          className="text-4xl font-bold text-gray-800 flex items-center gap-3"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           <FaFolderOpen className="text-blue-500" />
           My Projects
-        </h1>
-        <p className="text-lg text-gray-700 leading-relaxed">
+        </motion.h1>
+        <motion.p
+          className="text-lg text-gray-700 leading-relaxed"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6 }}
+        >
           🌟 Dive into my innovative projects, where I leverage my expertise in front-end development to design and implement distinctive, high-performing web solutions that not only meet but exceed user expectations, combining creativity, technical precision, and a user-centered approach to deliver exceptional digital experiences.
-        </p>
+        </motion.p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <ProjectCard key={index} {...project} />

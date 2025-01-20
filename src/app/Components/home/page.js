@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub, FaSkype } from "react-icons/fa";
+import { motion } from "framer-motion"; // Importer framer motion
 import bgimage from "../../Assets/Images/bgimage.jpg";
 import sary from "../../Assets/Images/images.png";
 
@@ -46,26 +47,46 @@ const Homepage = () => {
         />
         <div className="absolute inset-0 bg-black/95" />
       </div>
-      <div className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full px-4 sm:px-6 lg:px-16 py-36 lg:py-40">
+      <motion.div
+        className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full px-4 sm:px-6 lg:px-16 py-36 lg:py-40"
+        initial={{ opacity: 0 }} // Initial state
+        animate={{ opacity: 1 }} // Final state
+        transition={{ duration: 1 }} // Durée de l'animation
+      >
         <div className="w-full lg:w-1/2 max-w-2xl lg:mr-8">
-          <div className="space-y-6 lg:space-y-8 animate-fadeInLeft">
+          <div className="space-y-6 lg:space-y-8">
             <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
+              <motion.h1
+                className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight"
+                initial={{ y: -50, opacity: 0 }} // Initial position and opacity
+                animate={{ y: 0, opacity: 1 }} // Final position and opacity
+                transition={{ duration: 1 }}
+              >
                 Hello!👋
-              </h1>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
+              </motion.h1>
+              <motion.h1
+                className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight"
+                initial={{ y: -50, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+              >
                 I&apos;m,{" "}
                 <span className="text-blue-400 mt-2 text-5xl sm:text-7xl lg:text-8xl">
                   Mickaelio
                 </span>
-              </h1>
+              </motion.h1>
             </div>
-            <p className="text-base sm:text-lg text-gray-200">
+            <motion.p
+              className="text-base sm:text-lg text-gray-200"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+            >
               🌟 A dedicated front-end developer and web integrator with a passion for crafting seamless
               user experiences. Specializing in{" "}
               <span className="text-blue-400">React</span>, I transform ideas into impactful and
               memorable digital solutions. 🚀
-            </p>
+            </motion.p>
             <div className="pt-12 sm:pt-16 lg:pt-24">
               <div className="flex flex-wrap gap-4 sm:gap-6">
                 {socialLinks.map(({ href, label, icon }) => (
@@ -83,7 +104,11 @@ const Homepage = () => {
           </div>
         </div>
         <div className="w-full lg:w-1/2 lg:block hidden">
-          <div className="animate-scaleUp">
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 1 }}
+          >
             <Image
               src={sary}
               alt="Profile Picture"
@@ -92,9 +117,9 @@ const Homepage = () => {
               priority
               className="ml-32"
             />
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };
