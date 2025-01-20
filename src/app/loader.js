@@ -1,5 +1,4 @@
 'use client';
-
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
@@ -9,7 +8,7 @@ const Loader = ({ onComplete }) => {
       if (onComplete) {
         onComplete();
       }
-    }, 3000); 
+    }, 3100); 
 
     return () => clearTimeout(timer); 
   }, [onComplete]);

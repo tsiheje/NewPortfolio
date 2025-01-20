@@ -87,7 +87,7 @@ const About = () => {
         {skills.map((skill, index) => (
           <div
             key={index}
-            className={`${skill.bgColor} rounded-lg shadow-lg p-6 w-full sm:w-[400px] md:w-[520px] h-[180px] transition-transform duration-300 transform hover:scale-105`}
+            className={`${skill.bgColor} rounded-lg shadow-lg p-6 w-full sm:w-[400px] md:w-[520px] h-[200px] transition-transform duration-300 transform hover:scale-105`}
           >
             <h2 className={`text-2xl font-semibold ${skill.textColor} mb-4`}>{skill.title}</h2>
             <p className={`${skill.textColor === "text-white" ? "text-white" : "text-gray-600"}`}>
