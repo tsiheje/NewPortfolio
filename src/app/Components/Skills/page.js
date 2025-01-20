@@ -82,7 +82,7 @@ const Skills = () => {
           >
              <h1 className="text-4xl font-bold text-gray-800 lg:text-left flex items-center gap-3">
               <FaTools className="text-blue-500" />
-              MY SKILLS
+              My Skills
             </h1>
             <p className="text-lg text-gray-700 leading-relaxed mt-4">
               🌟 As a full-stack developer, I combine technical expertise with creative problem-solving to build comprehensive web solutions. My skill set spans front-end development, back-end architecture, and UI/UX design, allowing me to deliver complete, user-centered applications that meet modern development standards.

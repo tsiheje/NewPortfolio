@@ -70,9 +70,9 @@ const ImageGallery = ({ images }) => {
   );
 };
 
-const ProjectCard = ({ images, title, description, technologies }) => {
+const ProjectCard = ({ images, title, description, technologies, link }) => {
   return (
-    <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-[1.02] w-full p-2">
+    <div className="relative bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-[1.02] w-full p-2 group">
       <ImageGallery images={images} />
       <div className="p-4 space-y-3">
         <h3 className="text-xl font-bold text-gray-800">{title}</h3>
@@ -88,6 +88,18 @@ const ProjectCard = ({ images, title, description, technologies }) => {
           ))}
         </div>
       </div>
+      {link && (
+        <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-300">
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors duration-200"
+          >
+            Visit this
+          </a>
+        </div>
+      )}
     </div>
   );
 };
@@ -95,10 +107,35 @@ const ProjectCard = ({ images, title, description, technologies }) => {
 const Projects = () => {
   const projects = [
     {
+      images: [on1, on2, on3],
+      title: "One Note",
+      description: "Creating a web platform for easy access to information, courses, and assignments, enhancing communication and education.",
+      technologies: ["React.js", "Node.js", "Express.js", "MySQL"],
+    },
+    {
+      images: [en1, en2],
+      title: "Enjoy'B",
+      description: "Présentation du troisième projet et de ses aspects innovants.",
+      technologies: ["Next.js", "Tailwind CSS", "Node.js", "Express.js", "MySQL"],
+    },
+    {
+      images: [rp1, rp2, rp3],
+      title: "RapidePrime",
+      description: "Integration of Rapide Prime's website.",
+      technologies: ["Next.js", "Tailwind CSS", "GSAP Animation"],
+    },
+    {
       images: [pt1, pt2, pt3],
       title: "Old Portfolio",
       description: "A portfolio to showcase my projects and skills, highlighting my creativity and ability to design engaging user interfaces.",
-      technologies: ["React.js", "Tailwind CSS", "GSAP Animation"]
+      technologies: ["React.js", "Tailwind CSS", "GSAP Animation"],
+      link: "https://mickaelio.vercel.app",
+    },
+    {
+      images: [mr1, mr2, mr3],
+      title: "Mi-krea",
+      description: "Integration of Mi-Krea's website.",
+      technologies: ["Next.js", "GSAP Animation"],
     },
     {
       images: [ro1, ro2],
@@ -106,30 +143,6 @@ const Projects = () => {
       description: "Developing a web application for task scheduling using the Critical Path Method (CPM)",
       technologies: ["React.js", "Tailwind CSS", "Reactflow"],
     },
-    {
-      images: [on1, on2, on3],
-      title: "One Note",
-      description: "Creating a web platform for easy access to information, courses, and assignments, enhancing communication and education.",
-      technologies: ["React.js", "Node.js", "Express.js", "MySQL"],
-    },
-    {
-        images: [rp1, rp2, rp3],
-        title: "RapidePrime",
-        description: "Integration of Rapide Prime's website.",
-        technologies: ["Next.js", "Tailwind CSS", "GSAP Animation"],
-    },
-    {
-        images: [mr1, mr2, mr3],
-        title: "Mi-krea",
-        description: "Integration of Mi-Krea's website.",
-        technologies: ["Next.js", "GSAP Animation"],
-    },
-    {
-        images: [en1, en2],
-        title: "Enjoy'B",
-        description: "Présentation du troisième projet et de ses aspects innovants.",
-        technologies: ["Next.js", "Tailwind CSS", "Node.js", "Express.js", "MySQL"],
-    }
   ];
 
   return (
@@ -137,7 +150,7 @@ const Projects = () => {
       <div className="flex flex-col gap-8">
         <h1 className="text-4xl font-bold text-gray-800 flex items-center gap-3">
           <FaFolderOpen className="text-blue-500" />
-          MY PROJECTS
+          My Projects
         </h1>
         <p className="text-lg text-gray-700 leading-relaxed">
           🌟 Dive into my innovative projects, where I leverage my expertise in front-end development to design and implement distinctive, high-performing web solutions that not only meet but exceed user expectations, combining creativity, technical precision, and a user-centered approach to deliver exceptional digital experiences.
