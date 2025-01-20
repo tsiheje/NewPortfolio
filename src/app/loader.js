@@ -1,42 +1,48 @@
-'use client'; 
+'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const Loader = ({ onComplete }) => {
-  const [showText, setShowText] = useState(false);
-
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowText(true);
       if (onComplete) {
         onComplete();
-      }
-    }, 1000);
+    }, 3000); 
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer); 
   }, [onComplete]);
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3, 
+        when: "beforeChildren",
+      },
+    },
+  };
+
+  const letterVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+  };
+
   return (
-    <div className="fixed inset-0 flex flex-col items-center justify-center bg-gray-900 z-10">
-      <div
-        className={`text-white text-6xl font-bold flex space-x-4 transition-opacity duration-700 ${
-          showText ? 'opacity-100' : 'opacity-0'
-        }`}
+    <div className="fixed inset-0 flex flex-col items-center justify-center bg-gray-900 z-50">
+      <motion.div
+        className="text-white text-6xl font-bold flex space-x-3"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
       >
         {'Mickaelio'.split('').map((letter, index) => (
-          <span
-            key={index}
-            className="transition-transform duration-500 ease-out transform"
-            style={{
-              transitionDelay: `${index * 100}ms`,
-              transform: showText ? 'translateY(0)' : 'translateY(50px)',
-              opacity: showText ? 1 : 0,
-            }}
-          >
+          <motion.span key={index} variants={letterVariants}>
             {letter}
-          </span>
+          </motion.span>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };

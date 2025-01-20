@@ -120,7 +120,7 @@ const Projects = () => {
       <div className="flex flex-col gap-8">
         <h1 className="text-4xl font-bold text-gray-800 flex items-center gap-3">
           <FaFolderOpen className="text-blue-500" />
-          My Projects
+          MY PROJECTS
         </h1>
         <p className="text-lg text-gray-700 leading-relaxed">
           🌟 Dive into my innovative projects, where I leverage my expertise in front-end development to design and implement distinctive, high-performing web solutions that not only meet but exceed user expectations, combining creativity, technical precision, and a user-centered approach to deliver exceptional digital experiences.

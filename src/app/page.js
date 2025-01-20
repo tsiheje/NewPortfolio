@@ -1,7 +1,7 @@
-'use client'
+'use client';
+
 import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import Image from "next/image";
 import Loader from './loader';
 import Barnav from './Components/Barnav/page';
 import Homepage from './Components/home/page';
@@ -17,10 +17,6 @@ export default function Home() {
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
 
-    const timer = setTimeout(() => {
-      setLoading(false); 
-    }, 2700);
-
     const handleNavClick = (e) => {
       const href = e.target.getAttribute('href');
       if (href?.startsWith('#')) {
@@ -30,7 +26,7 @@ export default function Home() {
           if (targetId === 'home') {
             window.scrollTo({
               top: 0,
-              behavior: 'smooth'
+              behavior: 'smooth',
             });
           } else {
             const targetElement = document.getElementById(targetId);
@@ -48,7 +44,6 @@ export default function Home() {
     });
 
     return () => {
-      clearTimeout(timer);
       navLinks.forEach(link => {
         link.removeEventListener('click', handleNavClick);
       });
@@ -63,6 +58,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
         >
           <div className="fixed top-0 left-0 w-full z-50">

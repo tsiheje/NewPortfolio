@@ -78,17 +78,14 @@ const Skills = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-center lg:text-left"
+            className="lg:text-left"
           >
              <h1 className="text-4xl font-bold text-gray-800 lg:text-left flex items-center gap-3">
               <FaTools className="text-blue-500" />
-              My Skills
+              MY SKILLS
             </h1>
-            <p className="text-lg text-gray-600 leading-relaxed mt-4">
-              As a full-stack developer, I combine technical expertise with creative problem-solving 
-              to build comprehensive web solutions. My skill set spans front-end development, 
-              back-end architecture, and UI/UX design, allowing me to deliver complete, 
-              user-centered applications that meet modern development standards.
+            <p className="text-lg text-gray-700 leading-relaxed mt-4">
+              🌟 As a full-stack developer, I combine technical expertise with creative problem-solving to build comprehensive web solutions. My skill set spans front-end development, back-end architecture, and UI/UX design, allowing me to deliver complete, user-centered applications that meet modern development standards.
             </p>
           </motion.div>
           

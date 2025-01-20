@@ -88,7 +88,7 @@ const Contact = () => {
       <div className="mb-8 sm:mb-12">
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 flex items-center gap-2 sm:gap-3">
           <FaEnvelope className="text-blue-500" />
-          Contact Me
+          CONTACT ME
         </h1>
         <p className="text-base sm:text-lg text-gray-700 mt-3 sm:mt-4">
           🌟 Have questions, ideas, or a desire to collaborate? Don&apos;t hesitate to get in touch—I&apos;m here to assist! Whether through the form below, on WhatsApp, or directly via email, I&apos;m always happy to connect, discuss your vision, and work together to bring your projects to life.
