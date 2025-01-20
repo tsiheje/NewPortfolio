@@ -3,6 +3,23 @@ import { FaFolderOpen, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Image from 'next/image';
 import { useState } from 'react';
 import contact from "../../Assets/Images/contact.jpg";
+import pt1 from "../../Assets/Images/pt/pt1.png";
+import pt2 from "../../Assets/Images/pt/pt2.png";
+import pt3 from "../../Assets/Images/pt/pt3.png";
+import en1 from "../../Assets/Images/en/en1.png";
+import en2 from "../../Assets/Images/en/en2.png";
+import mr1 from "../../Assets/Images/mr/mr1.png";
+import mr2 from "../../Assets/Images/mr/mr2.png";
+import mr3 from "../../Assets/Images/mr/mr3.png";
+import rp1 from "../../Assets/Images/rp/rp1.png";
+import rp2 from "../../Assets/Images/rp/rp2.png";
+import rp3 from "../../Assets/Images/rp/rp3.png";
+import on1 from "../../Assets/Images/on/onenote1.png";
+import on2 from "../../Assets/Images/on/onenote2.png";
+import on3 from "../../Assets/Images/on/onenote3.png";
+import ro1 from "../../Assets/Images/ro/ro1.png";
+import ro2 from "../../Assets/Images/ro/ro2.png";
+
 
 const ImageGallery = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -78,37 +95,37 @@ const ProjectCard = ({ images, title, description, technologies }) => {
 const Projects = () => {
   const projects = [
     {
-      images: [contact, contact, contact],
+      images: [pt1, pt2, pt3],
       title: "Ancien Portfolio",
       description: "To showcase my projects and skills, demonstrating my creativity and ability to craft attractive interfaces.",
       technologies: ["React.js", "Tailwind CSS", "GSAP Animation"],
     },
     {
-      images: [contact, contact, contact],
+      images: [ro1, ro2],
       title: "Critical Path Methode",
       description: "Developing a web application for task scheduling using the Critical Path Method (CPM)",
       technologies: ["React.js", "Tailwind CSS", "Reactflow"],
     },
     {
-      images: [contact, contact, contact],
+      images: [on1, on2, on3],
       title: "One Note",
       description: "Creating a web platform for easy access to information, courses, and assignments, enhancing communication and education.",
       technologies: ["React.js", "Node.js", "Express.js", "MySQL"],
     },
     {
-        images: [contact, contact, contact],
+        images: [rp1, rp2, rp3],
         title: "RapidePrime",
         description: "Integration of Rapide Prime's website.",
         technologies: ["Next.js", "Tailwind CSS", "GSAP Animation"],
     },
     {
-        images: [contact, contact, contact],
+        images: [mr1, mr2, mr3],
         title: "Mi-krea",
         description: "Integration of Mi-Krea's website.",
         technologies: ["Next.js", "GSAP Animation"],
     },
     {
-        images: [contact, contact, contact],
+        images: [en1, en2],
         title: "Enjoy'B",
         description: "Présentation du troisième projet et de ses aspects innovants.",
         technologies: ["Next.js", "Tailwind CSS", "Node.js", "Express.js", "MySQL"],
