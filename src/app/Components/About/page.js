@@ -8,7 +8,7 @@ const skills = [
   {
     title: "Front-End Development",
     description:
-      "Designing and developing responsive, modern user interfaces with React.js, ensuring optimal performance, seamless user experiences, and a strong emphasis on accessibility for all users.",
+      "Designing and developing responsive, modern user interfaces with React.js, ensuring optimal performance, seamless user experiences.",
     bgColor: "bg-white",
     textColor: "text-gray-800",
   },
@@ -22,14 +22,14 @@ const skills = [
   {
     title: "Web Integration",
     description:
-      "Transforming mockups and designs into pixel-perfect HTML/CSS implementations, ensuring attention to detail, multi-browser compatibility, and responsive layouts for an optimal user experience.",
+      "Transforming mockups and designs into pixel-perfect HTML/CSS implementations, ensuring attention to detail, multi-browser compatibility.",
     bgColor: "bg-gray-800",
     textColor: "text-white",
   },
   {
     title: "Performance Optimization",
     description:
-      "Enhancing website performance and loading speed by implementing file optimization techniques, compressing images, minifying resources, and leveraging best practices for efficient and seamless user experiences.",
+      "Enhancing website performance and loading speed by implementing file optimization techniques, compressing images.",
     bgColor: "bg-white",
     textColor: "text-gray-800",
   },
@@ -107,7 +107,7 @@ const About = () => {
         {skills.map((skill, index) => (
           <motion.div
             key={index}
-            className={`${skill.bgColor} rounded-lg shadow-lg p-6 w-full sm:w-[400px] md:w-[520px] h-[240px] transition-transform duration-300 transform hover:scale-105`}
+            className={`${skill.bgColor} rounded-lg shadow-lg p-6 w-full sm:w-[400px] md:w-[520px] h-[200px] transition-transform duration-300 transform hover:scale-105`}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
