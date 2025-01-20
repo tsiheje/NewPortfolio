@@ -96,9 +96,9 @@ const Projects = () => {
   const projects = [
     {
       images: [pt1, pt2, pt3],
-      title: "Ancien Portfolio",
-      description: "To showcase my projects and skills, demonstrating my creativity and ability to craft attractive interfaces.",
-      technologies: ["React.js", "Tailwind CSS", "GSAP Animation"],
+      title: "Old Portfolio",
+      description: "A portfolio to showcase my projects and skills, highlighting my creativity and ability to design engaging user interfaces.",
+      technologies: ["React.js", "Tailwind CSS", "GSAP Animation"]
     },
     {
       images: [ro1, ro2],
