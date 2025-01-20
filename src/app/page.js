@@ -69,7 +69,7 @@ export default function Home() {
               <Homepage />
             </div>
             <div className="relative">
-              <div id="home" className="h-screen w-full" />
+              {/* <div id="home" className="h-screen w-full" /> */}
               <div className="relative bg-gray-100 z-10">
                 <About />
                 <Skills />

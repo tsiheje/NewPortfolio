@@ -15,7 +15,7 @@ const Barnav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setHasBackground(window.scrollY > 1200); 
+      setHasBackground(window.scrollY > 600); 
     };
 
     window.addEventListener('scroll', handleScroll);
