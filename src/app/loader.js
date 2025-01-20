@@ -33,7 +33,8 @@ const Loader = ({ onComplete }) => {
   return (
     <div className="fixed inset-0 flex flex-col items-center justify-center bg-gray-900 z-50">
       <motion.div
-        className="text-white text-6xl font-bold flex space-x-3"
+        className="text-white font-bold flex space-x-2 
+                   text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
