@@ -20,6 +20,7 @@ import Tailwind from "../../Assets/Images/Tailwind.png";
 import Ps from "../../Assets/Images/Ps.png";
 import typescript from "../../Assets/Images/typescript.png";
 import mui from "../../Assets/Images/mui.png";
+import bt from "../../Assets/Images/bt.png";
 
 const categorizedSkills = {
   "Frontend Development": [
@@ -35,6 +36,7 @@ const categorizedSkills = {
     { id: 11, image: Next, label: "Next.js" },
     { id: 12, image: Node, label: "Node.js" },
     { id: 8, image: Ex, label: "Express.js" },
+    { id: 20, image: bt, label: "Bootstrap" },
     { id: 19, image: mui, label: "Material UI" },
   ],
   "Backend & Databases": [
@@ -115,8 +117,8 @@ const Skills = () => {
                       variants={itemVariants}
                       className="group"
                     >
-                      <div className="relative rounded-xl transition-all duration-300 transform hover:-translate-y-1">
-                        <div className="flex items-center gap-2">
+                      <div className="relative rounded-xl transition-all duration-300 transform hover:-translate-y-2">
+                        <div className="flex items-center gap-3">
                           <div className="relative  w-12 h-12">
                             <Image
                               src={skill.image}

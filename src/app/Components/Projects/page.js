@@ -123,7 +123,7 @@ const Projects = () => {
     {
       images: [en1, en2],
       title: "Enjoy'B",
-      description: "Présentation du troisième projet et de ses aspects innovants.",
+      description: "Development of an online manga reading platform, allowing users to read and add manga to the platform.",
       technologies: ["Next.js", "Tailwind CSS", "Node.js", "Express.js", "MySQL"],
     },
     {
