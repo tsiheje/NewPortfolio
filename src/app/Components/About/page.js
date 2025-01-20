@@ -107,7 +107,7 @@ const About = () => {
         {skills.map((skill, index) => (
           <motion.div
             key={index}
-            className={`${skill.bgColor} rounded-lg shadow-lg p-6 w-full sm:w-[400px] md:w-[520px] h-[230px] transition-transform duration-300 transform hover:scale-105`}
+            className={`${skill.bgColor} rounded-lg shadow-lg px-6 py-10 w-full sm:w-[400px] md:w-[520px] h-[230px] transition-transform duration-300 transform hover:scale-105`}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
