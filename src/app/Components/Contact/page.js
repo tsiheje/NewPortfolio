@@ -1,12 +1,14 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { FaEnvelope } from "react-icons/fa";
 import contact from "../../Assets/Images/contact.jpg";
 import Image from 'next/image';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,24 +16,53 @@ const Contact = () => {
     message: '',
   });
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState('');
+  const [status, setStatus] = useState({
+    isSubmitting: false,
+    message: '',
+    isError: false
+  });
+
+  useEffect(() => {
+    // Initialize EmailJS with your public key
+    emailjs.init("fgNks1NlCAiD7MKOP");
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('');
+    setStatus({ isSubmitting: true, message: '', isError: false });
 
-    setTimeout(() => {
-      setSubmitStatus('Votre message a été envoyé avec succès !');
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 1000);
+    try {
+      const result = await emailjs.sendForm(
+        'service_vf3sa82', 
+        'template_ny4jvr9', 
+        form.current
+      );
+
+      if (result.text === 'OK') {
+        setStatus({
+          isSubmitting: false,
+          message: 'Message sent successfully!',
+          isError: false
+        });
+        
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      } else {
+        throw new Error('Failed to send message');
+      }
+
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      setStatus({
+        isSubmitting: false,
+        message: 'Failed to send message. Please try again.',
+        isError: true
+      });
+    }
   };
 
   const renderInput = (name, type, placeholder) => (
@@ -65,7 +96,7 @@ const Contact = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-10">
-        <form onSubmit={handleSubmit} className="w-full lg:w-1/2 bg-white p-4 sm:p-6 rounded-lg shadow-lg">
+        <form ref={form} onSubmit={handleSubmit} className="w-full lg:w-1/2 bg-white p-4 sm:p-6 rounded-lg shadow-lg">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
             {renderInput('name', 'text', 'Name')}
             {renderInput('email', 'email', 'Email')}
@@ -84,16 +115,18 @@ const Contact = () => {
           />
           <button
             type="submit"
-            disabled={isSubmitting}
+            disabled={status.isSubmitting}
             className={`w-full px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300 text-sm sm:text-base ${
-              isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+              status.isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
-            {isSubmitting ? 'Envoi en cours...' : 'Send'}
+            {status.isSubmitting ? 'Sending...' : 'Send'}
           </button>
-          {submitStatus && (
-            <p className="mt-3 sm:mt-4 text-green-600 text-sm sm:text-base">
-              {submitStatus}
+          {status.message && (
+            <p className={`mt-3 sm:mt-4 text-sm sm:text-base ${
+              status.isError ? 'text-red-600' : 'text-green-600'
+            }`}>
+              {status.message}
             </p>
           )}
         </form>
