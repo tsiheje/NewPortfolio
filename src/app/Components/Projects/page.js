@@ -1,8 +1,8 @@
 "use client";
 import { FaFolderOpen, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import Image from 'next/image';
-import { useState } from 'react';
-import { motion } from 'framer-motion'; // Import motion
+import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import contact from "../../Assets/Images/contact.jpg";
 import pt1 from "../../Assets/Images/pt/pt1.png";
 import pt2 from "../../Assets/Images/pt/pt2.png";
@@ -21,7 +21,40 @@ import on3 from "../../Assets/Images/on/onenote3.png";
 import ro1 from "../../Assets/Images/ro/ro1.png";
 import ro2 from "../../Assets/Images/ro/ro2.png";
 
-// Image Gallery Component
+// Hook pour détecter la visibilité
+const useInView = () => {
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setIsInView(false);
+        } else {
+          setIsInView(true);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "-50px",
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return [ref, isInView];
+};
+
 const ImageGallery = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -71,14 +104,28 @@ const ImageGallery = ({ images }) => {
   );
 };
 
-// Project Card Component
-const ProjectCard = ({ images, title, description, technologies, link }) => {
+const ProjectCard = ({ images, title, description, technologies, link, isInView, delay }) => {
+  const cardVariants = {
+    hidden: { 
+      opacity: 0,
+      y: 30
+    },
+    visible: { 
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: delay * 0.2
+      }
+    }
+  };
+
   return (
     <motion.div
       className="relative bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:scale-[1.02] w-full p-2 group"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      variants={cardVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
     >
       <ImageGallery images={images} />
       <div className="p-4 space-y-3">
@@ -111,8 +158,21 @@ const ProjectCard = ({ images, title, description, technologies, link }) => {
   );
 };
 
-// Main Projects Component
 const Projects = () => {
+  const [sectionRef, isInView] = useInView();
+  
+  const headerVariants = {
+    hidden: { 
+      opacity: 0,
+      y: -20
+    },
+    visible: { 
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6 }
+    }
+  };
+
   const projects = [
     {
       images: [on1, on2, on3],
@@ -154,28 +214,34 @@ const Projects = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-gray-100 px-6 lg:px-16 pt-24" id="projects">
+    <section 
+      ref={sectionRef}
+      className="min-h-screen bg-gray-100 px-6 lg:px-16 pt-24" 
+      id="projects"
+    >
       <div className="flex flex-col gap-8">
-        <motion.h1
-          className="text-4xl font-bold text-gray-800 flex items-center gap-3"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <motion.div
+          variants={headerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
         >
-          <FaFolderOpen className="text-blue-500" />
-          My Projects
-        </motion.h1>
-        <motion.p
-          className="text-lg text-gray-700 leading-relaxed"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-        >
-          🌟 Dive into my innovative projects, where I leverage my expertise in front-end development to design and implement distinctive, high-performing web solutions that not only meet but exceed user expectations, combining creativity, technical precision, and a user-centered approach to deliver exceptional digital experiences.
-        </motion.p>
+          <h1 className="text-4xl font-bold text-gray-800 flex items-center gap-3">
+            <FaFolderOpen className="text-blue-500" />
+            My Projects
+          </h1>
+          <p className="text-lg text-gray-700 leading-relaxed mt-4">
+            🌟 Dive into my innovative projects, where I leverage my expertise in front-end development to design and implement distinctive, high-performing web solutions that not only meet but exceed user expectations, combining creativity, technical precision, and a user-centered approach to deliver exceptional digital experiences.
+          </p>
+        </motion.div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+            <ProjectCard 
+              key={index} 
+              {...project} 
+              isInView={isInView}
+              delay={index}
+            />
           ))}
         </div>
       </div>

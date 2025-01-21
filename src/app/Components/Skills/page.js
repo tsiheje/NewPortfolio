@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { FaTools } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import HTML from "../../Assets/Images/Html.png";
 import Ai from "../../Assets/Images/Ai.png";
 import MySQL from "../../Assets/Images/Mysql.png";
@@ -21,6 +22,40 @@ import Ps from "../../Assets/Images/Ps.png";
 import typescript from "../../Assets/Images/typescript.png";
 import mui from "../../Assets/Images/mui.png";
 import bt from "../../Assets/Images/bt.png";
+
+// Hook personnalisé pour détecter la visibilité
+const useInView = () => {
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) {
+          setIsInView(false);
+        } else {
+          setIsInView(true);
+        }
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "-50px",
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return [ref, isInView];
+};
 
 const categorizedSkills = {
   "Frontend Development": [
@@ -56,35 +91,67 @@ const categorizedSkills = {
 };
 
 const Skills = () => {
+  const [sectionRef, isInView] = useInView();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const categoryVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
         staggerChildren: 0.1
       }
     }
   };
 
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
+  const skillVariants = {
+    hidden: { 
+      opacity: 0,
+      y: 20
+    },
+    visible: { 
+      opacity: 1,
       y: 0,
-      opacity: 1
+      transition: {
+        duration: 0.5
+      }
     }
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 px-6 lg:px-16 pt-24" id="skills">
+    <section 
+      ref={sectionRef}
+      className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 px-6 lg:px-16 pt-24" 
+      id="skills"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col gap-10">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={{
+              hidden: { opacity: 0, y: -20 },
+              visible: { 
+                opacity: 1, 
+                y: 0,
+                transition: { duration: 0.6 }
+              }
+            }}
             className="lg:text-left"
           >
-             <h1 className="text-4xl font-bold text-gray-800 lg:text-left flex items-center gap-3">
+            <h1 className="text-4xl font-bold text-gray-800 lg:text-left flex items-center gap-3">
               <FaTools className="text-blue-500" />
               My Skills
             </h1>
@@ -96,13 +163,17 @@ const Skills = () => {
           <motion.div 
             variants={containerVariants}
             initial="hidden"
-            animate="visible"
+            animate={isInView ? "visible" : "hidden"}
             className="space-y-12"
           >
             {Object.entries(categorizedSkills).map(([category, skills], categoryIndex) => (
-              <div key={category} className="space-y-6">
+              <motion.div 
+                key={category} 
+                className="space-y-6"
+                variants={categoryVariants}
+              >
                 <motion.div
-                  variants={itemVariants}
+                  variants={skillVariants}
                   className="flex items-center gap-4"
                 >
                   <h2 className="text-2xl font-semibold text-gray-800">
@@ -110,16 +181,19 @@ const Skills = () => {
                   </h2>
                   <div className="h-px flex-grow bg-gradient-to-r from-blue-200 to-transparent" />
                 </motion.div>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-                  {skills.map((skill, index) => (
+                <motion.div 
+                  className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+                  variants={categoryVariants}
+                >
+                  {skills.map((skill) => (
                     <motion.div
                       key={skill.id}
-                      variants={itemVariants}
+                      variants={skillVariants}
                       className="group"
                     >
                       <div className="relative rounded-xl transition-all duration-300 transform hover:-translate-y-2">
                         <div className="flex items-center gap-3">
-                          <div className="relative  w-12 h-12">
+                          <div className="relative w-12 h-12">
                             <Image
                               src={skill.image}
                               alt={`${skill.label} logo`}
@@ -135,8 +209,8 @@ const Skills = () => {
                       </div>
                     </motion.div>
                   ))}
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </motion.div>
         </div>

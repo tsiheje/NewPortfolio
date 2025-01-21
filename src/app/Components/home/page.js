@@ -1,11 +1,42 @@
 "use client";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import { FaFacebook, FaTwitter, FaLinkedin, FaGithub, FaSkype } from "react-icons/fa";
-import { motion } from "framer-motion"; // Importer framer motion
 import bgimage from "../../Assets/Images/bgimage.jpg";
 import sary from "../../Assets/Images/images.png";
 
+const useInView = () => {
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "-50px",
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return [ref, isInView];
+};
+
 const Homepage = () => {
+  const [sectionRef, isInView] = useInView();
+
   const socialLinks = [
     {
       href: "https://www.facebook.com/Rasolofoniaina.Mickaelio/",
@@ -35,65 +66,73 @@ const Homepage = () => {
   };
 
   return (
-    <section id="home" className="h-screen w-full">
+    <section id="home" className="h-screen w-full" ref={sectionRef}>
       <div className="absolute inset-0 w-full h-full z-0">
         <Image
           src={bgimage}
           alt="Background"
           fill
-          className="object-cover object-center"
+          className={`object-cover object-center transition-opacity duration-1000 ${
+            isInView ? 'opacity-100' : 'opacity-0'
+          }`}
           priority
           quality={100}
         />
-        <div className="absolute inset-0 bg-black/95" />
+        <div className={`absolute inset-0 bg-black/95 transition-opacity duration-1000 ${
+          isInView ? 'opacity-100' : 'opacity-0'
+        }`} />
       </div>
-      <motion.div
-        className="relative z-10 flex flex-col lg:flex-row min-h-screen w-full px-4 sm:px-6 lg:px-16 py-36 lg:py-40"
-        initial={{ opacity: 0 }} // Initial state
-        animate={{ opacity: 1 }} // Final state
-        transition={{ duration: 1 }} // Durée de l'animation
+      <div
+        className={`relative z-10 flex flex-col lg:flex-row min-h-screen w-full px-4 sm:px-6 lg:px-16 py-36 lg:py-40 transition-all duration-1000 transform ${
+          isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
       >
         <div className="w-full lg:w-1/2 max-w-2xl lg:mr-8">
           <div className="space-y-6 lg:space-y-8">
             <div>
-              <motion.h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight"
-                initial={{ y: -50, opacity: 0 }} // Initial position and opacity
-                animate={{ y: 0, opacity: 1 }} // Final position and opacity
-                transition={{ duration: 1 }}
+              <h1
+                className={`text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight transition-all duration-700 transform ${
+                  isInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+                }`}
+                style={{ transitionDelay: '200ms' }}
               >
                 Hello!👋
-              </motion.h1>
-              <motion.h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight"
-                initial={{ y: -50, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1, delay: 0.3 }}
+              </h1>
+              <div
+                className={`transition-all duration-700 transform ${
+                  isInView ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'
+                }`}
+                style={{ transitionDelay: '400ms' }}
               >
-                I&apos;m,{" "}
-                <span className="text-blue-400 mt-2 text-5xl sm:text-7xl lg:text-8xl">
-                  Mickaelio
-                </span>
-              </motion.h1>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white leading-tight">
+                  I&apos;m,{" "}
+                  <span className="text-blue-400 mt-2 text-5xl sm:text-7xl lg:text-8xl">
+                    Mickaelio
+                  </span>
+                </h1>
+              </div>
             </div>
-            <motion.p
-              className="text-base sm:text-lg text-gray-200"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.6 }}
+            <p
+              className={`text-base sm:text-lg text-gray-200 transition-all duration-700 transform ${
+                isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ transitionDelay: '600ms' }}
             >
               🌟 A dedicated front-end developer and web integrator with a passion for crafting seamless
               user experiences. Specializing in{" "}
               <span className="text-blue-400">React</span>, I transform ideas into impactful and
               memorable digital solutions. 🚀
-            </motion.p>
+            </p>
             <div className="pt-12 sm:pt-16 lg:pt-24">
               <div className="flex flex-wrap gap-4 sm:gap-6">
-                {socialLinks.map(({ href, label, icon }) => (
+                {socialLinks.map(({ href, label, icon }, index) => (
                   <button
                     key={label}
                     onClick={(e) => handleSocialClick(e, href)}
-                    className="text-gray-300 hover:text-blue-400 transition-transform duration-300 transform hover:scale-110"
+                    className={`text-gray-300 hover:text-blue-400 transition-all duration-500 transform hover:scale-110 ${
+                      isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+                    }`}
+                    style={{ transitionDelay: `${800 + index * 100}ms` }}
                     aria-label={label}
                   >
                     {icon}
@@ -104,10 +143,11 @@ const Homepage = () => {
           </div>
         </div>
         <div className="w-full lg:w-1/2 lg:block hidden">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 1 }}
+          <div
+            className={`transition-all duration-1000 transform ${
+              isInView ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            }`}
+            style={{ transitionDelay: '400ms' }}
           >
             <Image
               src={sary}
@@ -117,9 +157,9 @@ const Homepage = () => {
               priority
               className="ml-32"
             />
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };

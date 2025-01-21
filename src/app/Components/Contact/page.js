@@ -1,11 +1,40 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { FaEnvelope } from "react-icons/fa";
 import contact from "../../Assets/Images/contact.jpg";
 import Image from 'next/image';
 import emailjs from '@emailjs/browser';
+
+const useInView = () => {
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "-50px",
+      }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  return [ref, isInView];
+};
 
 const Contact = () => {
   const form = useRef();
@@ -22,8 +51,9 @@ const Contact = () => {
     isError: false
   });
 
+  const [sectionRef, isInView] = useInView();
+
   useEffect(() => {
-    // Initialize EmailJS with your public key
     emailjs.init("fgNks1NlCAiD7MKOP");
   }, []);
 
@@ -49,12 +79,10 @@ const Contact = () => {
           message: 'Message sent successfully!',
           isError: false
         });
-        
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
         throw new Error('Failed to send message');
       }
-
     } catch (error) {
       console.error('EmailJS Error:', error);
       setStatus({
@@ -73,7 +101,10 @@ const Contact = () => {
       onChange={handleChange}
       placeholder={placeholder}
       required
-      className="w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+      className={`w-full p-2 sm:p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base transform ${
+        isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      }`}
+      style={{ transitionDelay: `${['name', 'email', 'subject'].indexOf(name) * 100}ms` }}
     />
   );
 
@@ -84,8 +115,14 @@ const Contact = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-gray-100 flex flex-col px-4 sm:px-6 lg:px-16 pt-16 sm:pt-20 lg:pt-24 pb-8" id="contact">
-      <div className="mb-8 sm:mb-12">
+    <section 
+      ref={sectionRef}
+      className="min-h-screen bg-gray-100 flex flex-col px-4 sm:px-6 lg:px-16 pt-16 sm:pt-20 lg:pt-24 pb-8"
+      id="contact"
+    >
+      <div className={`mb-8 sm:mb-12 transform transition-all duration-700 ${
+        isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      }`}>
         <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-800 flex items-center gap-2 sm:gap-3">
           <FaEnvelope className="text-blue-500" />
           Contact Me
@@ -96,7 +133,13 @@ const Contact = () => {
       </div>
 
       <div className="flex flex-col lg:flex-row items-start justify-between gap-8 lg:gap-10">
-        <form ref={form} onSubmit={handleSubmit} className="w-full lg:w-1/2 bg-white p-4 sm:p-6 rounded-lg shadow-lg">
+        <form 
+          ref={form} 
+          onSubmit={handleSubmit} 
+          className={`w-full lg:w-1/2 bg-white p-4 sm:p-6 rounded-lg shadow-lg transform transition-all duration-700 ${
+            isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'
+          }`}
+        >
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
             {renderInput('name', 'text', 'Name')}
             {renderInput('email', 'email', 'Email')}
@@ -111,14 +154,18 @@ const Contact = () => {
             placeholder="Your message"
             rows="6"
             required
-            className="p-2 sm:p-3 border border-gray-300 rounded-md mb-4 sm:mb-6 w-full focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-300 text-sm sm:text-base"
+            className={`p-2 sm:p-3 border border-gray-300 rounded-md mb-4 sm:mb-6 w-full focus:ring-2 focus:ring-blue-400 focus:border-transparent transition-all duration-500 text-sm sm:text-base transform ${
+              isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+            style={{ transitionDelay: '300ms' }}
           />
           <button
             type="submit"
             disabled={status.isSubmitting}
-            className={`w-full px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300 text-sm sm:text-base ${
+            className={`w-full px-4 sm:px-6 py-2 sm:py-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition-all duration-500 text-sm sm:text-base transform ${
               status.isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-            }`}
+            } ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            style={{ transitionDelay: '400ms' }}
           >
             {status.isSubmitting ? 'Sending...' : 'Send'}
           </button>
@@ -131,7 +178,9 @@ const Contact = () => {
           )}
         </form>
 
-        <div className="w-full lg:w-1/2 mt-8 lg:mt-0">
+        <div className={`w-full lg:w-1/2 mt-8 lg:mt-0 transform transition-all duration-700 ${
+          isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+        }`}>
           <div className="overflow-hidden rounded-lg mb-6">
             <Image
               src={contact}
@@ -143,7 +192,13 @@ const Contact = () => {
           </div>
           <div className="space-y-4 sm:space-y-6">
             {contactDetails.map(({ icon, text }, index) => (
-              <div className="flex items-center" key={index}>
+              <div 
+                className={`flex items-center transform transition-all duration-500 ${
+                  isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
+                }`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+                key={index}
+              >
                 <FontAwesomeIcon
                   icon={icon}
                   className="mr-3 sm:mr-4 text-blue-500 text-lg sm:text-xl"
