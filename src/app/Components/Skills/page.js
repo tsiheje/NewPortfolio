@@ -28,7 +28,6 @@ const categorizedSkills = {
     { id: 2, image: CSS, label: "CSS" },
     { id: 10, image: Js, label: "JavaScript" },
     { id: 17, image: typescript, label: "TypeScript" },
-    { id: 15, image: Tailwind, label: "Tailwind CSS" },
   ],
   "Frameworks & Libraries": [
     { id: 2, image: Native, label: "React.js" },
@@ -37,6 +36,7 @@ const categorizedSkills = {
     { id: 12, image: Node, label: "Node.js" },
     { id: 8, image: Ex, label: "Express.js" },
     { id: 20, image: bt, label: "Bootstrap" },
+  { id: 15, image: Tailwind, label: "Tailwind CSS" },
     { id: 19, image: mui, label: "Material UI" },
   ],
   "Backend & Databases": [
