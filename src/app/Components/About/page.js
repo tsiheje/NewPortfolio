@@ -92,7 +92,7 @@ const About = () => {
               transition={{ duration: 1, delay: 0.9 }}
             >
               <a
-                href="/files/Rasolofoniaina Tsiheje Marie Mickaelio.pdf"
+                href="/files/mickaelio_CV.pdf"
                 className="inline-block bg-blue-500 hover:bg-blue-600 text-white text-xl py-3 px-5 rounded-lg shadow-lg transition-colors duration-300 mt-4"
                 target="_blank"
                 rel="noopener noreferrer"
