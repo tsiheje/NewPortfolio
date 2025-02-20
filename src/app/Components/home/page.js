@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { FaFacebook, FaTwitter, FaLinkedin, FaGithub, FaSkype } from "react-icons/fa";
+import { FaFacebook, FaWhatsapp, FaLinkedin, FaGithub, FaSkype } from "react-icons/fa";
 import bgimage from "../../Assets/Images/bgimage.jpg";
 import sary from "../../Assets/Images/images.png";
 
@@ -39,9 +39,9 @@ const Homepage = () => {
 
   const socialLinks = [
     {
-      href: "https://www.facebook.com/Rasolofoniaina.Mickaelio/",
-      label: "Facebook",
-      icon: <FaFacebook size={40} className="sm:w-12 sm:h-12" />,
+      href: "https://wa.me/+261342341566",
+      label: "WhatsApp",
+      icon: <FaWhatsapp size={40} className="sm:w-12 sm:h-12" />,
     },
     {
       href: "https://www.linkedin.com/in/rasolofoniaina-tsiheje-marie-mickaelio3/",
